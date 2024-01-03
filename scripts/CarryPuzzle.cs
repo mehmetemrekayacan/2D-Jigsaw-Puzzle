@@ -9,10 +9,10 @@ public class CarryPuzzle : MonoBehaviour
 
     GameObject[] boxSet;
 
-    static AudioSource sharedAudioSource; // Tüm parçalar için ayný AudioSource
-    public AudioClip puzzleCompleteSound;  // Ses efekti dosyasý
+    static AudioSource sharedAudioSource; 
+    public AudioClip puzzleCompleteSound;  
 
-    bool isSoundPlayed = false;  // Sesin bir kez çalýnýp çalýnmadýðýný kontrol etmek için
+    bool isSoundPlayed = false;  
 
     private void OnMouseDrag()
     {
@@ -21,7 +21,7 @@ public class CarryPuzzle : MonoBehaviour
         transform.position = position;
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -29,7 +29,7 @@ public class CarryPuzzle : MonoBehaviour
 
         boxSet = GameObject.FindGameObjectsWithTag("Box");
 
-        // Ýlk parçanýn Start fonksiyonu içinde bir kez atanmasý
+        
         if (sharedAudioSource == null)
         {
             sharedAudioSource = gameObject.AddComponent<AudioSource>();
@@ -37,7 +37,7 @@ public class CarryPuzzle : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetMouseButtonUp(0))
@@ -51,11 +51,11 @@ public class CarryPuzzle : MonoBehaviour
                     {
                         transform.position = box.transform.position;
 
-                        // Puzzle tamamlandýðýnda ses efekti çal (sadece bir kez)
+                        
                         if (sharedAudioSource && puzzleCompleteSound && !isSoundPlayed)
                         {
                             sharedAudioSource.PlayOneShot(puzzleCompleteSound);
-                            isSoundPlayed = true;  // Ses çalýndý, bir daha çalmayacak
+                            isSoundPlayed = true;  
                         }
                     }
                     else
