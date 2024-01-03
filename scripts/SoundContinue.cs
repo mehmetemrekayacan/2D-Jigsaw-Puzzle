@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // Ýlk örneklenen AudioManager'ý koru
+        
         if (instance == null)
         {
             instance = this;
@@ -15,23 +15,23 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            // Ýkinci örneklenenleri yok et
+            
             Destroy(gameObject);
         }
     }
 
     void Start()
     {
-        // Þarkýyý çal
+        
         PlayMusic();
     }
 
     void PlayMusic()
     {
-        // Audio Source'u al
+        
         AudioSource audioSource = GetComponent<AudioSource>();
 
-        // Þarký çalýnýyorsa tekrar baþlat
+        
         if (!audioSource.isPlaying)
         {
             audioSource.Play();
@@ -40,19 +40,19 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        // SceneManager'ýn sceneLoaded olayýna abone ol
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        // SceneManager'ýn sceneLoaded olayýndan ayrýl
+        
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Sahne deðiþtiðinde müziði kontrol et ve baþlat
+        // Sahne deÃ°iÃ¾tiÃ°inde mÃ¼ziÃ°i kontrol et ve baÃ¾lat
         PlayMusic();
     }
 }
